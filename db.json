@@ -1,0 +1,53 @@
+{
+  "foods": [
+    {
+      "title": "brika",
+      "image": "https://i2.wp.com/www.webdo.tn/wp-content/uploads/2018/06/brik.jpg?resize=500%2C281",
+      "price": "5",
+      "id": 1
+    },
+    {
+      "title": "kafteji kebda",
+      "image": "https://i.pinimg.com/originals/a0/bb/de/a0bbde8083fb71d2d8d896a2f494bbfa.jpg",
+      "price": 5,
+      "id": 2
+    },
+    {
+      "title": "ojja",
+      "image": "https://i.ytimg.com/vi/wiyFexIKkkE/maxresdefault.jpg",
+      "price": "4",
+      "id": 3
+    },
+    {
+      "title": "spagetti",
+      "image": "https://lingolex.com/italian/spaghetti_bolognese.jpg",
+      "price": "10",
+      "id": 4
+    },
+    {
+      "title": "coscous",
+      "image": "https://www.196flavors.com/wp-content/uploads/2018/03/couscous-tunisien-1-FP.jpg",
+      "price": "35",
+      "id": 6
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "role": "admin",
+      "gmail": "ad@gmail.com",
+      "password": "aaa",
+      "name": "ahmed",
+      "status": "connected"
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "gmail": "us@gmail.com",
+      "password": "aaa",
+      "name": "flen",
+      "status": "connected"
+    }
+  ],
+  "activeusers": []
+}
