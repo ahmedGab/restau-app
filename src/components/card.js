@@ -8,18 +8,18 @@ class CardExampleGroups extends Component {
 
   render(){
     return (
-  <Card.Group>
-    <Card >
-      <Card.Content>
+      <div className="c">
+  <Card.Group >
+    <Card>
+      <Card.Content >
         <Image className="imgCard"
          src= {this.props.el.image}
         />
                
         <Card.Header>{this.props.el.title}</Card.Header>
-        <Card.Meta>{this.props.el.price}</Card.Meta>
+        <Card.Meta> <strong>{this.props.el.price} TND</strong></Card.Meta>
         <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
-        </Card.Description>
+        Sauce tomate, Fromage, Péppéroni*, Merguez, Jambon*, Champignons       </Card.Description>
       </Card.Content>
      
            <Card.Content extra>
@@ -33,6 +33,7 @@ class CardExampleGroups extends Component {
       
     </Card>
     </Card.Group>
+    </div>
     )
   }
 

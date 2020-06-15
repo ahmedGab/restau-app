@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Input, Menu,Button } from 'semantic-ui-react'
 import {  Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Order from './listorder'
 
  class MenuExampleSecondary extends Component {
   state = { activeItem: 'home' }
@@ -47,7 +48,7 @@ import { connect } from 'react-redux'
           />
            </Link>
         </Menu.Menu>
-       
+       <Order />
       </Menu>
     )
   }

@@ -20,15 +20,19 @@ class Home extends Component {
         const {foods,users}=this.props;
         
         return (
-            <div>
-                      <br />
-                      <br />
+            <div> 
+                <div className="menu">
+                <img src="https://colorlib.com/preview/theme/luigis/images/heading_logo.png"/>
+                 <h1>Notre menu
+
+</h1>   
+</div>
 
                 {/*
                 <input onChange={this.handleChangetitle} type="text" name="title" />
                 <button onClick={this.ajouter}  >+</button>
                 */}
-<div class="ui grid">
+<div class="ui grid t">
     {foods.map(el =><div class="four wide column"><Card key={el.id} el={el} /> </div> )}
                 </div>
             </div>

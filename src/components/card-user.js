@@ -1,50 +1,67 @@
-import React,{ useState } from 'react'
+import React,{ useState, Component } from 'react'
 import { Button, Card, Image } from 'semantic-ui-react'
-import {DeleteFoodsInApi,getpersonFromApi} from '../apis/json-server'
+import {AddAnOrder} from '../apis/json-server'
 import { connect } from 'react-redux'
-import Editproduct from './editproduct'
+import {  Link } from 'react-router-dom'
 
-const CardExampleGroups = (props) => (
-  
+
+class CardExampleGroups extends Component {
+state={click:false}
+addquantity=()=>{
+  this.setState({click:true})
+  let q=this.props.orders.map(el=>el.quantity)
+  alert(this.props.el.title)
+  alert(q)
+  if(this.props.el.title==="spagetti")
+ q="a"
+}
+
+
+  render(){
+   
+    return (
+      <div className="c">
   <Card.Group>
     <Card >
       <Card.Content>
      
       <div class="ui move up reveal">
   <div class="visible content imgCard">
-    <img src={props.el.image} class="ui  image imgCard"/>
+    <img src={this.props.el.image} class="ui  image imgCard"/>
   </div>
   <div class="hidden content">
-    <img src="https://www.196flavors.com/wp-content/uploads/2014/07/Tunisia-Tuna-Briks-2.jpg" class="ui small image"/>
+    <img src="https://www.lorient-express.com/wp-content/uploads/2018/08/Pizzas01-Avatar.png" class="ui imgCard  image"/>
   </div>
 </div>
     
       
-        <Card.Header>{props.el.title}</Card.Header>
-        <Card.Meta>{props.el.price}</Card.Meta>
+        <Card.Header>{this.props.el.title}</Card.Header>
+        <Card.Meta>{this.props.el.price}</Card.Meta>
         <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
+        Sauce blanche, Fromage, Viande kebab, oeuf, cheddar.
         </Card.Description>
       </Card.Content>
      
            <Card.Content extra>
-          
-           <button  className="ui teal button">Commandez</button>
-
+          {this.state.click==false ?
+           <button onClick={()=>{this.props.add(this.props.el.title,this.props.el.price,this.props.el.image);this.addquantity()}} className="ui teal button">Commandez</button>:<Link to="/login"><button>consultez votre commande </button> </Link>
+          }
           </Card.Content>
       
     </Card>
     </Card.Group>
+    </div>
 
-)
+    )}}
 const mapStateToProps = (state) =>( {
 
-  users:state.users
+  users:state.users,
+  orders:state.orders
 
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  delete:(id) => dispatch(DeleteFoodsInApi(id)),
+  add:(data1,data2,data3) => dispatch(AddAnOrder(data1,data2,data3)),
 
 })
 

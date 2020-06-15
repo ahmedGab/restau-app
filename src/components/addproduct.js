@@ -20,10 +20,11 @@ class ModalExampleCloseIcon extends Component {
     
     render(){
         return (
-            
-  <Modal trigger={<Button  >Ajouter la nourriture</Button>} closeIcon>
+          
+  <Modal trigger={  <div className="addP"><Button  >Ajouter la nourriture</Button> </div>} closeIcon>
     <Header icon='food' content='nourriture ' />
     <Modal.Content>
+
 
         <label>titre:</label>
     <input onChange={this.handleChange} type="text" name="title" ref="title" /> <br/><br/>

@@ -1,38 +1,55 @@
-import React,{ useState } from 'react'
-import { Button, Card, Image } from 'semantic-ui-react'
+import React,{ useState, Component } from 'react'
+import { Button, Card, Image, Message } from 'semantic-ui-react'
 import {DeleteFoodsInApi,getpersonFromApi} from '../apis/json-server'
 import { connect } from 'react-redux'
 import Editproduct from './editproduct'
+import Message1 from "./message"
 
-const CardExampleGroups = (props) => (
-  
+class CardExampleGroups extends Component {
+  state={show:false}
+   affich=()=>{
+  this.setState({show:true})
+ 
+  }
+ 
+  render(){
+return (
+  <div className="c">
   <Card.Group>
     <Card >
       <Card.Content>
      
     
     
-    <div class="ui small circular rotate reveal image">
-    <Image className=" visible content"
-         src= {props.el.image}
+ 
+    <Image className=" imgCard "
+         src= {this.props.el.image}
         />
 
-  <button></button>
-</div>
+ 
                
-        <Card.Header>{props.el.title}</Card.Header>
-        <Card.Meta>{props.el.price}</Card.Meta>
+        <Card.Header>{this.props.el.title}</Card.Header>
+        <Card.Meta>{this.props.el.price}</Card.Meta>
         <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
+        Sauce blanche, Fromage, Viande kebab, oeuf, cheddar.
         </Card.Description>
       </Card.Content>
      
-           
+      <Card.Content extra>
+       
+      <Message1 />
+         
+
+        
+          
+         </Card.Content>
+     
       
     </Card>
     </Card.Group>
+    </div>
 
-)
+)}}
 const mapStateToProps = (state) =>( {
 
   users:state.users

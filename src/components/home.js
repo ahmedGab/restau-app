@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFoodsFromApi,getpersonFromApi } from '../apis/json-server'
+import Addproduct from "./addproduct"
 
 import Card from './card'
 
@@ -21,14 +22,22 @@ class Home extends Component {
         
         return (
             <div>
-                      <br />
-                      <br />
+                       
+                <div className="menu">
+                <img src="https://colorlib.com/preview/theme/luigis/images/heading_logo.png"/>
+                 <h1>Notre menu
+
+</h1>   
+
+</div>
+<Addproduct />
 
                 {/*
                 <input onChange={this.handleChangetitle} type="text" name="title" />
                 <button onClick={this.ajouter}  >+</button>
                 */}
-<div class="ui grid">
+               
+<div class="t ui grid ">
     {foods.map(el =><div class="four wide column"><Card key={el.id} el={el} /> </div> )}
                 </div>
             </div>

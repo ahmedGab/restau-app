@@ -4,6 +4,7 @@ import './App.css';
 import HomeA from './components/home'
 import HomeU from './components/home-user'
 import HomeG from './components/home-guest'
+import Header from './components/header'
 
 
 import Navbar from './components/navbar'
@@ -11,6 +12,7 @@ import Addproduct from "./components/addproduct"
 import Login from "./components/login"
 import { connect } from 'react-redux'
 import { Switch, Route} from 'react-router-dom'
+import Signup from './components/signup';
 
 let a=""
 class App extends Component {
@@ -26,21 +28,24 @@ class App extends Component {
     <div className="App">
       <Switch>
       <Route exact path='/'> 
-      <Navbar  />
+      <Header />
       <HomeG/>
       </Route>
       <Route path='/user'> 
-      <Navbar  />
+      <Header  />
       <HomeU />
       </Route>
       <Route path='/admin'> 
-      <Navbar  />
-      <Addproduct />
+      <Header />     
       <HomeA />
       </Route>
       <Route path='/login'> 
       <Login passname={this.passname} />
       </Route>
+      <Route path='/signUp'> 
+      <Signup/>
+      </Route>
+      
       </Switch>
     </div>
 

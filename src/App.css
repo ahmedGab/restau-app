@@ -5,3 +5,63 @@ text-align: center;}
     height:  250px;
     width: 300px;
 }
+.segment{
+    width:100%
+}
+.a{
+    width:100%;
+
+}
+.t{
+    background:#601201;
+ 
+}
+.ze{
+  color:wheat
+}
+
+
+
+.ui.card>.content.extra,
+.ui.cards>.card>.content.extra {
+  background-color: rgb(27, 12, 12);
+  margin: 2px;
+}
+
+.logo{
+font-size: 35px;
+}
+.az{
+  display: flex;
+  justify-content: space-between;
+}
+.n{
+  display: flex;
+  margin-left: 45px;
+
+
+}
+.n input{
+  width: 50px;
+  text-align: center; 
+
+}
+strong{
+  font-size: 20px;
+  color: #EF0031;
+}
+.addP{
+  text-align: center;
+}
+.menu{
+  text-align: center;
+  background-color: #1b1c1d;
+  color: white;
+}
+.menu h1{
+  font-size: 4em;
+line-height: 1.4;
+}
+.c{
+  margin: 10px;
+}
