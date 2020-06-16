@@ -1,11 +1,14 @@
 import React from 'react'
 import {combineReducers} from 'redux'
-import { GET_ALL_FOODS ,GET_ALL_USERS,GET_NAME, GET_ALL_ORDERS,ADD_ORDERS} from '../actions/types'
+import { GET_ALL_FOODS ,GET_ALL_USERS,GET_NAME, GET_ALL_ORDERS,DEL_ORDERS,
+    GET_TOTAL
+    } from '../actions/types'
 
 const initState=[]
 const usersState=[]
 const nameState="logout"
 const orderState=[]
+const cartState=false
 const foodsReducer=(state=initState,action)=>{
     if(action.type===GET_ALL_FOODS)
     return action.payload
@@ -27,11 +30,23 @@ const nameReducer=(state=nameState,action)=>{
 const orderReducer=(state=orderState,action)=>{
     if(action.type===GET_ALL_ORDERS)
     return action.payload
+   
     return state
 
 }
-const cartReducer= (state = initState,action)=>{
+const totalReducer=(state=0,action)=>{
+    if(action.type===GET_TOTAL)
+    return action.payload
    
+    return state
+
+}
+
+    
+
+    
+
+    /*
     //INSIDE HOME COMPONENT
     if(action.type === ADD_ORDERS){
           let addedItem = state.items.find(item=> item.id === action.id)
@@ -59,6 +74,7 @@ const cartReducer= (state = initState,action)=>{
         }
     }
 }
+*/
 // const addTOfoodList=(state=initState,action)=>{
 //     if(action.type===ADD_FOODS)
 //     return action.payload
@@ -69,6 +85,7 @@ export default combineReducers({
     foods:foodsReducer,
     users:usersReducer,
     name:nameReducer,
-    orders:orderReducer
+    orders:orderReducer,
+    total:totalReducer
     // addfoods:addTOfoodList
 })

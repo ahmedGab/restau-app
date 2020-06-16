@@ -1,4 +1,4 @@
-import {getAllProducts,getAllUsers,getOrders} from "../actions"
+import {getAllProducts,getAllUsers,getOrders,} from "../actions"
 import axios from "axios"
 export function getFoodsFromApi(){
     return (dispatch)=>
@@ -64,9 +64,9 @@ export function editActiveUsersInApi(id,data1){
         }).catch(err=>console.log(err)) 
 
 }
-export function AddAnOrder(data1,data2,data3,data4){
+export function AddAnOrder(data1,data2,data3,data4,data5){
     return ()=>
-     axios.post("http://localhost:3004/order",{title:data1,price:data2,image:data3,user:data4,quantity:1}).then(rep=>{
+     axios.post("http://localhost:3004/order",{title:data1,price:data2,image:data3,num:data4,quantity:1,user:data5}).then(rep=>{
         
         console.log(rep.data)
         window.location.reload()
@@ -77,9 +77,8 @@ export function AddAnOrder(data1,data2,data3,data4){
 export function DeleteorderInApi(id){
     return ()=>
      axios.delete(`http://localhost:3004/order/${id}`).then(rep=>{
-        
-        window.location.reload()
         console.log(rep.data)
+        window.location.reload()
         }).catch(err=>console.log(err)) 
 
 }
@@ -117,5 +116,15 @@ export function DecrementQuantyyInApi(id,data1){
        
         console.log(rep.data)
         }).catch(err=>console.log(err)) 
+    }
+    export function editAdd(id,data1){
+        return ()=> 
+         axios.patch(`http://localhost:3004/foods/${id}`,{added:data1}).then(rep=>{
+           
+            console.log(rep.data)
+            }).catch(err=>console.log(err)) 
+    
+    }
 
-}
+        
+      

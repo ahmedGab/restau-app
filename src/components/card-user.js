@@ -1,24 +1,24 @@
 import React,{ useState, Component } from 'react'
 import { Button, Card, Image } from 'semantic-ui-react'
-import {AddAnOrder} from '../apis/json-server'
+import {AddAnOrder,editAdd} from '../apis/json-server'
 import { connect } from 'react-redux'
 import {  Link } from 'react-router-dom'
+import Order from './listorder'
 
 
+let z
 class CardExampleGroups extends Component {
 state={click:false}
 addquantity=()=>{
-  this.setState({click:true})
-  let q=this.props.orders.map(el=>el.quantity)
-  alert(this.props.el.title)
-  alert(q)
-  if(this.props.el.title==="spagetti")
- q="a"
+  let a=this.props.el.added
+  a=true
+
 }
 
 
   render(){
-   
+    let b=window.location.href[window.location.href.length-1]
+z=this.props.users.map(el=>el.id)[b-1]
     return (
       <div className="c">
   <Card.Group>
@@ -43,8 +43,7 @@ addquantity=()=>{
       </Card.Content>
      
            <Card.Content extra>
-          {this.state.click==false ?
-           <button onClick={()=>{this.props.add(this.props.el.title,this.props.el.price,this.props.el.image);this.addquantity()}} className="ui teal button">Commandez</button>:<Link to="/login"><button>consultez votre commande </button> </Link>
+          {this.props.el.added==true ?<Order />:  <button onClick={()=>{this.props.add(this.props.el.title,this.props.el.price,this.props.el.image,this.props.el.id,z);this.props.editA(this.props.el.id,true)}} className="ui teal button">Commandez</button>
           }
           </Card.Content>
       
@@ -61,7 +60,8 @@ const mapStateToProps = (state) =>( {
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  add:(data1,data2,data3) => dispatch(AddAnOrder(data1,data2,data3)),
+  add:(data1,data2,data3,data4,data5) => dispatch(AddAnOrder(data1,data2,data3,data4,data5)),
+  editA:(id,data) =>dispatch(editAdd(id,data))
 
 })
 

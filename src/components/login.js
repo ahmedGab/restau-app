@@ -15,19 +15,20 @@ class LoginForm extends Component {
 
     handleChangeUnput=(e)=>{
 this.setState({[e.target.name]:e.target.value})
-console.log(this.state.mail)
+console.log(this.state.email)
     }
     verification=()=>{
-let a=this.props.users.map((el,i)=>el.gmail)
+let a
+a=this.props.users.map((el,i)=>el.gmail)
 let b=this.props.users.map((el,i)=>el.password)
 let c=this.props.users.map((el,i)=>el.name)
 let d=this.props.users.map(el=>el.id)
 let e=this.props.users.map(el=>el.role)
 console.log(b)
-let i=0
-for (let i=0;i<a[i].length;i++){
+
+for (let i=0;i<a.length;i++){
    
-        if(this.state.mail===a[i] && this.state.pass===b[i]   ){
+        if(this.state.email===a[i] && this.state.pass===b[i]   ){
 
 
             alert(`bienvenue ${c[i]}`)
@@ -58,22 +59,25 @@ for (let i=0;i<a[i].length;i++){
         <Image src='https://cdn.iconscout.com/icon/premium/png-512-thumb/user-login-password-1939034-1641558.png' /> 
 Connectez-vous à votre compte
       </Header>
-      <Form  onSubmit={(e) => {this.state.aller && this.state.role==="admin" ?window.location.href='/admin':this.state.aller && this.state.role==="user" ?window.location.href=`/user/${this.state.id}`:window.location.href='/login' && alert("email ou mot de passe incorrects");e.preventDefault()}} inverted>
+      <Form  onSubmit={(e) => {this.state.aller && this.state.role==="admin" ?window.location.href=`/admin/${this.state.id}`:this.state.aller && this.state.role==="user" ?window.location.href=`/user/${this.state.id}`:window.location.href='/login' && alert("email ou mot de passe incorrects");e.preventDefault()}} inverted>
         <Segment stacked>
-          <Form.Input  onChange={this.handleChangeUnput} fluid label='First name' name="mail" fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+          <Form.Input  onChange={this.handleChangeUnput} fluid label='First name' name="email" fluid icon='user' iconPosition='left' placeholder='E-mail address' type="email" id="email" required/>
           <Form.Input
-          onChange={this.handleChangeUnput} fluid label='Last name' name="pass" 
+          onChange={this.handleChangeUnput} fluid label='Last name'  name="pass" 
             fluid
             icon='lock'
             iconPosition='left'
             placeholder='Password'
             type='password'
+            required
           />
 
-          <Button onClick={()=>{this.verification();               
+          <Button  onClick={()=>{this.verification();               
 }} type='submit'  color='teal' fluid size='large'>
             connectez
           </Button>
+
+    
         </Segment>
       </Form>
       <Message>

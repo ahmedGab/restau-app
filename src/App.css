@@ -3,7 +3,7 @@ text-align: center;}
 
 .imgCard{
     height:  250px;
-    width: 300px;
+    width: 270px;
 }
 .segment{
     width:100%
@@ -25,7 +25,8 @@ text-align: center;}
 .ui.card>.content.extra,
 .ui.cards>.card>.content.extra {
   background-color: rgb(27, 12, 12);
-  margin: 2px;
+  
+  
 }
 
 .logo{
@@ -63,5 +64,21 @@ strong{
 line-height: 1.4;
 }
 .c{
-  margin: 10px;
+  margin: 0 5px;
+
+
+}
+h2{
+  color:rgb(126, 125, 83)
+}
+.prix{color: black
+  ;width:50px}
+.total{
+  margin-top: 10px;
+ margin-left: 40%;
+ width: 120px;
+}
+.total input{
+  font-size: 15px;
+color: black !important;
 }

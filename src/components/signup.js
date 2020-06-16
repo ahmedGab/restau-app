@@ -30,10 +30,11 @@ class SignForm extends Component {
             placeholder='Password'
             type='password'
           />
-
+<Link to="/login">
           <Button onClick={()=>this.props.add(this.state.name,this.state.mail,this.state.pass)} color='teal' fluid size='large'>
             Inscrivez-vous
           </Button>
+          </Link>
         </Segment>
       </Form>
       <Message>

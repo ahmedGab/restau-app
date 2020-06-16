@@ -3,11 +3,13 @@ import React, { Component } from 'react'
         import {connect} from "react-redux"
         import {GetfromOrder} from '../apis/json-server'
         import Order from "./order"
+        import { Input } from 'semantic-ui-react'
+
 
         
         class NestedModal extends Component {
             
-          state = { open: false ,
+          state = { open: false 
            }
         
           open = () => this.setState({ open: true })
@@ -15,7 +17,6 @@ import React, { Component } from 'react'
         
           render() {
             const { open } = this.state
-        
             return (
               <Modal
                 open={open}
@@ -24,16 +25,16 @@ import React, { Component } from 'react'
                 size='small'
                 trigger={
                   <Button primary icon>
-                    Proceed <Icon name='right chevron' />
+                    Confirmez vos achats <Icon name='right chevron' />
                   </Button>
                 }
               >
                 <Modal.Header>Modal #2</Modal.Header>
                 <Modal.Content>
-                  <p>That's everything!</p>
+              <p>On vous souhaite un bon appétit</p>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Button icon='check' content='All Done' onClick={this.close} />
+                  <Button icon='check' content='Fermer' onClick={this.close} />
                 </Modal.Actions>
               </Modal>
             )
@@ -44,6 +45,11 @@ import React, { Component } from 'react'
             componentDidMount(){
                 this.props.get()
               }
+ state={
+   datas: this.props.orders,
+   t:this.props.total 
+ }
+ 
 
              
             render(){
@@ -55,7 +61,16 @@ import React, { Component } from 'react'
           <i className="shopping basket icon"></i>
           </Button.Content>
         </Button>}>
-            <Modal.Header>Modal #1</Modal.Header>
+            <Modal.Header>Mes commandes</Modal.Header>
+            <Input className="total"
+    icon='money bill alternate outline icon' 
+
+    iconPosition='left'
+    label={{ tag: true, content: 'Totale de prix' }}
+    labelPosition='right'
+    value={this.props.total +" TND"}
+$  />
+
             <Modal.Content image>
                 
               <div className='image'>
@@ -64,7 +79,7 @@ import React, { Component } from 'react'
               <Modal.Description>
               <div class="ui three column grid ">
             {this.props.orders.map( el=>
-             <Order key={el.id} el={el}/>)
+             <Order key={el.id}  el={el}/>)
             }
             </div>
               </Modal.Description>
@@ -75,10 +90,12 @@ import React, { Component } from 'react'
           </Modal>
                  ) }}
         const mapStateToProps=(state)=>({
-      orders:state.orders        })
+      orders:state.orders  ,
+    total:state.total      })
 
       const mapDispatchToProps = (dispatch) => ({
-        get: () => dispatch(GetfromOrder())
+        get: () => dispatch(GetfromOrder()),
+        
 
 
      

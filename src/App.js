@@ -45,6 +45,9 @@ class App extends Component {
       <Route path='/signUp'> 
       <Signup/>
       </Route>
+      <Route path='/undefined'> 
+      <Login passname={this.passname} />
+      </Route>
       
       </Switch>
     </div>

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link} from 'react-router-dom'
 import Order from './listorder'
+import { getpersonFromApi } from '../apis/json-server'
+
 
 import {
   Button,
@@ -19,6 +21,7 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 import img from "./images/pizza.png"
+import { connect } from 'react-redux'
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -71,13 +74,23 @@ HomepageHeading.propTypes = {
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
  * It can be more complicated, but you can create really flexible markup.
  */
+let b
 class DesktopContainer extends Component {
   state = {}
+
+  componentDidMount() {
+    this.props.getusers()
+
+}
+
 
   hideFixedMenu = () => this.setState({ fixed: false })
   showFixedMenu = () => this.setState({ fixed: true })
 
   render() {
+    console.log(window.location.href[window.location.href.length-1])
+    let b=window.location.href[window.location.href.length-1]
+    console.log(this.props.users.map(el=>el.name)[b-1])
     const { children } = this.props
     const { fixed } = this.state
 
@@ -115,21 +128,23 @@ class DesktopContainer extends Component {
                     Log in
                   </Button>
                   </Link>
+                  <Link to="/signup">
                   <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
                     Sign Up
                   </Button> 
+                  </Link>
   </>
                  :""
   }
   </Menu.Item>
                   <Menu.Item position='right'>
-
-                {window.location.href==="http://localhost:3000/"?"":<Order /> 
-                } &nbsp; &nbsp;&nbsp;
-                { window.location.href==="http://localhost:3000/"?"":<Link to="/"><button class="ui negative basic button">Se déconnecter</button> </Link>
+                          
+                { window.location.href==="http://localhost:3000/"?"":<div><Link to="/"><h2>Bienvenue  {this.props.users.map(el=>el.name[0].toUpperCase()+el.name.slice(1,))[b-1]} </h2>
+<button class="ui negative basic button">Se déconnecter </button> </Link><Order /> </div>
                 }
                     
 </Menu.Item>
+
               </Container>
               </Menu>
             <img  className="a" src="https://colorlib.com/preview/theme/luigis/images/slider_1_1920_1200.jpg" />
@@ -228,5 +243,11 @@ const ResponsiveContainer = ({ children }) => (
 ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
+const mapStatetoProps=(state)=>({
+  users:state.users
+})
+const mapDispatchToProps = (dispatch) => ({
+  getusers:()=>dispatch(getpersonFromApi())
 
-export default DesktopContainer
+})
+export default connect(mapStatetoProps,mapDispatchToProps) (DesktopContainer)
